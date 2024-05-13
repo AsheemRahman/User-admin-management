@@ -1,6 +1,5 @@
 const dotenv = require('dotenv').config()
 
-
 const admin = (req, res) => {
     try {
         if (req.session.admin) {
@@ -8,14 +7,10 @@ const admin = (req, res) => {
         } else {
             res.redirect('/admin/login')
         }
-
     } catch (err) {
         console.log(`Error redirect to admin login`);
     }
 }
-
-
-
 
 const login = (req, res) => {
     try {
@@ -29,10 +24,8 @@ const login = (req, res) => {
     }
 }
 
-
 const loginPost = (req, res) => {
     try {
-
         if (req.body.email === process.env.ADMIN_USERNAME && req.body.password === process.env.ADMIN_PASSWORD) {
             req.session.admin = req.body.email
             res.redirect('/admin/dashboard')
@@ -40,7 +33,6 @@ const loginPost = (req, res) => {
             req.flash("errorMessage", 'Invalid username or password')
             res.redirect('/admin/login')
         }
-
     } catch (err) {
         console.log(`Error during admin login ${err}`);
     }
@@ -56,7 +48,6 @@ const logout = (req, res) => {
                 res.redirect('/admin/login')
             }
         })
-
     } catch (err) {
         console.log(`Error while admin logout ${err}`);
     }

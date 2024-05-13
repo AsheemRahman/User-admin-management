@@ -1,8 +1,6 @@
 const userSchema = require("../../model/userSchema");
 const bcrypt = require('bcrypt')
 
-
-
 const dashboard = async (req, res) => {
     try {
         // user search 
@@ -17,13 +15,11 @@ const dashboard = async (req, res) => {
     }
 }
 
-
 const editUser = async (req, res) => {
     try {
         const userID = req.params.id;
         const userData = await userSchema.findById(userID)
         res.render('admin/editUser', { title: "Edit user", alertMessage: req.flash('errorMessage'), userData })
-
     } catch (err) {
         console.log(`Error during user editing ${err}`);
     }
@@ -32,7 +28,6 @@ const editUser = async (req, res) => {
 
 const editUserPost = async (req, res) => {
     try {
-
         const userID = req.params.id;
         const updateStatus = await userSchema.findByIdAndUpdate(userID, { name: req.body.editName })
         if (updateStatus === undefined) {
@@ -41,7 +36,6 @@ const editUserPost = async (req, res) => {
         }
         req.flash("errorMessage", 'User data updated')
         res.redirect('/admin/dashboard')
-
     } catch (err) {
         console.log(`Error during user data updation ${err}`);
     }
@@ -62,11 +56,8 @@ const addUserPost = async (req, res) => {
             email: req.body.email,
             password: await bcrypt.hash(req.body.password, 10),
         }
-
         const checkUserExist = await userSchema.find({ email: req.body.email })
-
         if (checkUserExist.length === 0) {
-
             userSchema.insertMany(userData).then((result) => {
                 req.flash('errorMessage', "User Registration is successful")
                 return res.redirect('/admin/dashboard')
@@ -77,18 +68,13 @@ const addUserPost = async (req, res) => {
             req.flash('errorMessage', 'User already exist')
             return res.redirect('/admin/dashboard')
         }
-
     } catch (err) {
         console.log(`Error while adding user ${err}`);
     }
 }
 
-
-
-
 const deleteUser = async (req, res) => {
     try {
-
         const userID = req.params.id;
         const deleteStatus = await userSchema.findByIdAndDelete(userID)
         if (deleteStatus === undefined) {
@@ -98,14 +84,10 @@ const deleteUser = async (req, res) => {
             req.flash("errorMessage", 'user deleted')
             res.redirect('/admin/dashboard')
         }
-
     } catch (err) {
         console.log(`Error during user data delete ${err}`);
     }
 }
-
-
-
 
 module.exports = {
     dashboard,

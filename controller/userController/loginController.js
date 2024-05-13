@@ -1,7 +1,6 @@
 const userSchema = require("../../model/userSchema");
 const bcrypt = require('bcrypt')
 
-
 const user = (req, res) => {
     try {
         res.redirect('/user/login')
@@ -9,7 +8,6 @@ const user = (req, res) => {
         console.log('Error During user route');
     }
 }
-
 
 const login = (req, res) => {
     try {

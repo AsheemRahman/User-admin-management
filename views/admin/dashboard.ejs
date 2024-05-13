@@ -33,18 +33,15 @@
 
 <%- include('navbar') %>
   <div class="dashboard-container container">
-
     <div class="user-search-box">
       <form action="/admin/dashboard/" method="get">
         <input type="text" name="search" placeholder="search User">
         <button class="btn btn-info">Search</button>
       </form>
     </div>
-
     <div class="add-user-box">
       <a href="/admin/add-user" class="btn btn-success">Add user</a>
     </div>
-
     <table class="table">
       <thead>
         <tr>
@@ -55,7 +52,6 @@
         </tr>
       </thead>
       <tbody>
-
         <% userDetails.forEach((user,index)=>{ %>
           <tr>
             <th scope="row">
@@ -73,8 +69,6 @@
             </td>
           </tr>
           <% }) %>
-
-
       </tbody>
     </table>
   </div>
@@ -84,7 +78,6 @@
 
     <script>
       const deleteUser = document.querySelectorAll('.delete-user')
-
       deleteUser.forEach((button) => {
         button.addEventListener('click', (e) => {
           e.preventDefault();

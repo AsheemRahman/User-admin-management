@@ -10,7 +10,6 @@ const flash=require('connect-flash')
 const mongodbConnection=require('./config/mongodb')
 const nocache=require('nocache')
 
-
 // port number
 const port=process.env.PORT || 3000
 
@@ -45,11 +44,9 @@ app.set('layout','./layouts/layout')
 // view engine to ejs
 app.set('view engine','ejs')
 
-
 // routes
 app.use('/user',userRouter)
 app.use('/admin',adminRouter)
-
 
 // first route
 app.get('/',(req,res)=>{

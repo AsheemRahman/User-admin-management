@@ -1,6 +1,3 @@
-
-
-
 function checkUserSection(req,res,next){
     if(req.session.user){
         next();
@@ -8,6 +5,5 @@ function checkUserSection(req,res,next){
         res.redirect('/user/login')
     }
 }
-
 
 module.exports=checkUserSection

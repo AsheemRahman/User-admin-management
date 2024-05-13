@@ -1,17 +1,3 @@
-// const home=(req,res)=>{
-//     try {
-//         res.render('user/home',{title:"Home",alertMessage:req.flash('errorMessage')})
-//     } catch (err) {
-//         console.log(`Error during home page render ${err}`);
-//     }
-// }
-
-
-// module.exports={
-//     home
-// }
-
-
 const userSchema = require("../../model/userSchema");
 
 const home=async (req,res)=>{
@@ -24,7 +10,7 @@ const home=async (req,res)=>{
         res.render('user/home',{title:"Home",alertMessage:req.flash('errorMessage')})
     } catch (err) {
         console.log(`Error during home page render ${err}`);
-    }   
+    }
 }
 
 module.exports={
